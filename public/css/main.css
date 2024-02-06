@@ -87,7 +87,7 @@ label{
     border-radius: 5px;
     box-shadow: 0 0 3px rgba(0,0,0,0.5);
 }
-.header_button button:hover, .item_main_menu:hover{
+.header_button button:hover, .item_main_menu:hover, .simple_button:hover{
     background-color: #b6b6b6;
     color: #ffffff;
     box-shadow: none;
@@ -137,6 +137,7 @@ label{
     border-radius: 5px;
     font-weight: bold;
     font-size: 0.95rem;
+    color: #fff;
 }
 .active_left_menu{
     background-color: #0066cc;
@@ -146,6 +147,7 @@ label{
 }
 .li_left_menu:hover{
     background-color: #0066cc;
+    color: #fff;
 }
 .li_left_menu span{
     font-weight: bold;
@@ -154,4 +156,50 @@ label{
 .a_left_menu, .a_main_menu{
     text-decoration: none;
     color: #fff;
+}
+.div_item_admin_block{
+    border: 1px solid #b6b6b6;
+    padding: 20px;
+    border-radius: 7px;
+}
+.simple_button{
+    background-color: #0080ff;
+    border: none;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.5);
+    margin: 8px 0;
+    padding: 8px;
+}
+.wrap_success_message{
+    position: relative;
+    display: inline-block;
+    margin: 0 0 8px 0;
+}
+.close_message{
+    position: relative;
+}
+.close_message span{
+    position: absolute;
+    top: 4px;
+    right: 12px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color:#363636;
+}
+.close_message span:hover{
+    color: #fff;
+}
+.success_message{
+    background-color: #00FF7F;
+    display: inline-block;
+    padding: 8px 40px 8px 15px;
+}
+.error_message{
+    background-color: #ff0000;
+    color: #fff;
+    display: inline-block;
+    padding: 8px 40px 8px 15px; 
 }

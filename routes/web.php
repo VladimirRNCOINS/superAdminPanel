@@ -29,4 +29,5 @@ Route::middleware(['checkDashboardAccess'])->group(function () {
     Route::get('admin', [AdminController::class, 'index'])->name('admin');
     Route::get('users', [UsersController::class, 'index'])->name('users');
     Route::get('versions', [VersionsController::class, 'index'])->name('versions');
+    Route::get('create_version', [VersionsController::class, 'create'])->name('create_version');
 });
