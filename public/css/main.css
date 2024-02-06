@@ -161,6 +161,7 @@ label{
     border: 1px solid #b6b6b6;
     padding: 20px;
     border-radius: 7px;
+    margin: 0 0 20px 0;
 }
 .simple_button{
     background-color: #0080ff;

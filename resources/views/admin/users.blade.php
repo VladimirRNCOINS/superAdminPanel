@@ -5,5 +5,7 @@
 @endsection
 
 @section('content')
-    Users
+    <div class="div_item_admin_block">
+        cdd
+    </div>
 @endsection

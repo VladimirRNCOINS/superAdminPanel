@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\Versions\AppVersion;
-use App\Repositories\Version\AppVersionRepository;
 
 class VersionsController extends Controller
 {
@@ -14,10 +13,9 @@ class VersionsController extends Controller
         return view('admin.versions');
     }
 
-    public function create()
+    public function create(AppVersion $appVersion)
     {
-        $hash_version = AppVersion::createVersion();
-        $result = AppVersionRepository::saveOrCreateVersion($hash_version);
+        $result = $appVersion->createVersion();
 
         if ($result) {
             return redirect()->route('versions')->with('version_success', 'Хеш для новой версии приложения успешно сохранен!');

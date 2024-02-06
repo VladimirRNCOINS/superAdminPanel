@@ -5,7 +5,7 @@ use App\Models\Version;
 
 class AppVersionRepository
 {
-    public static function saveOrCreateVersion($hash)
+    public function saveOrCreateVersion($hash)
     {
         $version = new Version;
         
