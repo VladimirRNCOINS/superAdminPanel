@@ -1,0 +1,63 @@
+#wrap_custom_pagination_block{
+    display: flex;
+    justify-content: center;
+    margin: 1px 0;
+}
+#inside_wrap_custom_pagination_block{
+    display: flex;
+    justify-content: center;
+    border: 1px solid #c5c5c5;
+    padding: 20px 15px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    z-index: 20000;
+    box-shadow: 0 0 3px rgba(0,0,0,0.3);
+}
+.pagination_element{
+    border: 1px solid #d2d8dd;
+    display: inline-block;
+    cursor: pointer;
+    margin: 0 6px;
+    border-radius: 3px;
+}
+#fast_rewind, #fast_forward{
+    padding: 3px 4px;
+}
+#fast_rewind:hover, #fast_forward:hover, #arrow_left:hover, #arrow_right:hover, #refresh:hover{
+    background-color: #0080ff;
+}
+#fast_rewind:hover span, #fast_forward:hover span, #arrow_left:hover span, #arrow_right:hover span, #refresh:hover span{
+    color: #fff;
+}
+#fast_rewind span, #fast_forward span{
+    color: #555555;
+}
+#arrow_left, #arrow_right{
+    padding: 0;
+}
+#arrow_left span, #arrow_right span{
+    font-size: 30px !important;
+    color: #555555;
+}
+#current_page input, #per_page input{
+    width: 60px;
+    height: 30px;
+    border: none;
+    text-align: right;
+}
+#refresh{
+    padding: 0 2px;
+}
+#refresh span{
+    margin: 3px;
+    padding: 0;
+    text-align: center;
+    vertical-align: bottom;
+    color: #555555;
+}
+.pagination_text{
+    margin: 5px 0 0 0;
+}
+.pagination_text{
+    font-size: 0.95rem;
+}
