@@ -9,7 +9,7 @@
     border: 1px solid #c5c5c5;
     padding: 20px 15px;
     border-radius: 10px;
-    background-color: #ffffff;
+    background-color: #f7f7f7;
     z-index: 20000;
     box-shadow: 0 0 3px rgba(0,0,0,0.3);
 }
@@ -19,6 +19,7 @@
     cursor: pointer;
     margin: 0 6px;
     border-radius: 3px;
+    background-color: #ffffff;
 }
 #fast_rewind, #fast_forward{
     padding: 3px 4px;

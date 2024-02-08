@@ -5,12 +5,20 @@
 @endsection
 
 @section('content')
+    @if (isset($users))
     <div class="div_item_admin_block">
-        @foreach ($users as $user)
-            {{ $user->name }}
-        @endforeach
-        {{ $users->links('pagination::bootstrap-4') }}
-        На странице: {{ $users->perPage() }}
+        
+            <div id="wrap_data_users">
+                @foreach ($users as $user)
+                    {{ $user->name }}
+                @endforeach
+                <div>-------------------------------------------</div>
+                <div>Всего: {{ $users->total }}</div>
+                <div>На странице: {{ $users->perPage }}</div>
+                <div>Текущая страница: {{ $users->currentPage }}</div>
+                <div>Последняя страница: {{ $users->lastPage }}</div>
+            </div>
+        
         <div id="wrap_custom_pagination_block">
             <div id="inside_wrap_custom_pagination_block">
                 <div class="pagination_element" id="fast_rewind">
@@ -52,20 +60,22 @@
                 </div>
             </div>
         </div>
+        
     </div>
+    @endif
 @endsection
 <script>
-    const loc = document.location;
-    const origin = loc.origin;
-    const pathname = loc.pathname;
-    const param = "?page=1";
-    const url = origin + pathname + param;
+        //const loc = document.location;
+        //const origin = loc.origin;
+        //const pathname = loc.pathname;
+        //const pageParam = "?page=1";
+        //const url = origin + pathname/* + pageParam*/;
 
-    console.log(loc);
-    console.log(origin);
-    console.log(pathname);
-    console.log(url);
-    if (!loc.search) {
-        location.href = url;
-    }
+        //console.log(loc);
+        //console.log(origin);
+        //console.log(pathname);
+        //console.log(url);
+        //if (!loc.search) {
+            //location.href = url;
+        //}
 </script>

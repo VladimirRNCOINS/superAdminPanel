@@ -6,7 +6,7 @@
             </li>
         </a>
         <a class="a_left_menu" href="{{ route('users') }}">
-            <li class="{{ request()->routeIs('users') ? 'active_left_menu' : 'li_left_menu' }}">
+            <li class="{{ request()->routeIs('users_show') ? 'active_left_menu' : 'li_left_menu' }}">
                 <span>Пользователи</span>
             </li>
         </a>
