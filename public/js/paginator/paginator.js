@@ -8,11 +8,42 @@ document.addEventListener('DOMContentLoaded', function() {
     let route = null;
     let url = null;
 
+    //управление Inputs после нажатия кнопки Enter
     const currentPage = document.querySelector('#current_page input');
     const perPage = document.querySelector('#per_page input');
     const spanLastPage = document.querySelector('#span_last_page');
     let lastPage = spanLastPage.textContent || spanLastPage.innerText;
     lastPage = parseInt(lastPage.split('из ')[1]);
+
+    //управлене кнопками пагинатора после события Click
+    const fastRewind = document.getElementById('fast_rewind');
+    const fastForward = document.getElementById('fast_forward');
+    const refresh = document.getElementById('refresh');
+
+    if (parseInt(currentPage.value) <= 1) {
+        fastRewind.classList.add("disabled_div_paginator");
+    }
+    
+    if (parseInt(currentPage.value) >= lastPage) {
+        fastForward.classList.add("disabled_div_paginator");
+    }  
+
+    //all EventsListeners
+    fastRewind.addEventListener('click', function() {
+        currentPage.value = 1;
+        getInputsValue();
+    });
+
+    fastForward.addEventListener('click', function() {
+        currentPage.value = lastPage;
+        getInputsValue();
+    });
+
+    refresh.addEventListener('click', function() {
+        currentPage.value = 1;
+        perPage.value = 25;
+        getInputsValue();
+    });
 
     currentPage.addEventListener('keyup', function(e){
         runEnterKeyUp(e);
@@ -28,6 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    //валидация и вызов меодом GET пагинированные данные 
     function getInputsValue(){
         if (isNaN(currentPage.value) || isNaN(parseInt(currentPage.value)) || parseInt(currentPage.value) <= 0 || parseInt(currentPage.value) > lastPage || !Number.isInteger(parseFloat(currentPage.value))){
             currentPage.value = defaultCurrentPage;

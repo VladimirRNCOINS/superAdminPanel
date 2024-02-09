@@ -63,3 +63,7 @@
 .pagination_text{
     font-size: 0.95rem;
 }
+.disabled_div_paginator {
+    pointer-events: none;
+    opacity: 0.6;
+}
