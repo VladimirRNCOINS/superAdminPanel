@@ -20,12 +20,12 @@ class UsersController extends Controller
 
     public function show(Request $request, ManageUsers $manageUsers)
     {
-        $page = (int) $request->page;
-        $limit = (int) $request->limit;
-
-        if (!$page || !$limit) {
+        if (!is_numeric($request->page) || !is_numeric($request->limit) || $request->limit > 100) {
             return redirect()->route('users');
         }
+
+        $request->page = (int) $request->page;
+        $request->limit = (int) $request->limit;
 
         $users = $manageUsers->getUsers();
         return view('admin.users', ['users' => $users]);

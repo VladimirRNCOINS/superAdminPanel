@@ -35,7 +35,10 @@
                     <span>Страница:</span>
                 </div>
                 <div class="pagination_element" id="current_page">
-                    <input type="text" class="form-control" autocomplete="off">
+                    <input type="text" name="current_page" class="form-control" value="{{ $users->currentPage }}" autocomplete="off">
+                </div>
+                <div class="pagination_text">
+                    <span id="span_last_page">из {{ $users->lastPage }}</span>
                 </div>
                 <div class="pagination_element" id="arrow_right">
                     <span class="material-icons">
@@ -56,7 +59,7 @@
                     <span>На странице:</span>
                 </div>
                 <div class="pagination_element" id="per_page">
-                    <input type="text" class="form-control" autocomplete="off">
+                    <input type="text" name="per_page" class="form-control" value="{{ $users->perPage }}" autocomplete="off">
                 </div>
             </div>
         </div>
@@ -64,18 +67,3 @@
     </div>
     @endif
 @endsection
-<script>
-        //const loc = document.location;
-        //const origin = loc.origin;
-        //const pathname = loc.pathname;
-        //const pageParam = "?page=1";
-        //const url = origin + pathname/* + pageParam*/;
-
-        //console.log(loc);
-        //console.log(origin);
-        //console.log(pathname);
-        //console.log(url);
-        //if (!loc.search) {
-            //location.href = url;
-        //}
-</script>

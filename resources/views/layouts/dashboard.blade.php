@@ -21,4 +21,5 @@
         </div>
     </div>
 </body>
+<script src="{{ asset('js/paginator.js') }}"></script>
 </html>
