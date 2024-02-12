@@ -30,4 +30,9 @@ class UsersController extends Controller
         $users = $manageUsers->getUsers();
         return view('admin.users', ['users' => $users]);
     }
+
+    public function edit(Request $request)
+    {
+        echo 'Edit!';
+    }
 }

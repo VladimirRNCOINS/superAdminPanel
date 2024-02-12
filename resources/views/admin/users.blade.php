@@ -9,14 +9,34 @@
     <div class="div_item_admin_block">
         
             <div id="wrap_data_users">
-                @foreach ($users as $user)
-                    {{ $user->name }}
-                @endforeach
-                <div>-------------------------------------------</div>
-                <div>Всего: {{ $users->total }}</div>
-                <div>На странице: {{ $users->perPage }}</div>
-                <div>Текущая страница: {{ $users->currentPage }}</div>
-                <div>Последняя страница: {{ $users->lastPage }}</div>
+                <table class="table table-primary table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">Active</th>
+                            <th scope="col">Publish</th>
+                            <th scope="col">Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($users as $user)
+                                <tr>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->active }}</td>
+                                    <td>{{ $user->publish }}</td>
+                                    <td>
+                                        <a href="{{ route('edit_user', $user->id) }}">
+                                            <button type="button" class="btn btn-primary g_my_stilizy">
+                                                <span class="material-icons">edit</span>
+                                            </button>
+                                        </a>
+                                    </td>
+                                </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         
         <div id="wrap_custom_pagination_block">
