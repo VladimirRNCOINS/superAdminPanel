@@ -19,16 +19,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const fastRewind = document.getElementById('fast_rewind');
     const fastForward = document.getElementById('fast_forward');
     const refresh = document.getElementById('refresh');
+    const arrow_left = document.getElementById('arrow_left');
+    const arrow_right = document.getElementById('arrow_right');
 
     if (parseInt(currentPage.value) <= 1) {
         fastRewind.classList.add("disabled_div_paginator");
+        arrow_left.classList.add("disabled_div_paginator");
     }
     
     if (parseInt(currentPage.value) >= lastPage) {
         fastForward.classList.add("disabled_div_paginator");
+        arrow_right.classList.add("disabled_div_paginator");
     }  
 
     //all EventsListeners
+    arrow_left.addEventListener('click', function() {
+        currentPage.value = +currentPage.value - 1;
+        getInputsValue();
+    });
+
+    arrow_right.addEventListener('click', function() {
+        currentPage.value = +currentPage.value + 1;
+        getInputsValue();
+    });
+
     fastRewind.addEventListener('click', function() {
         currentPage.value = 1;
         getInputsValue();
