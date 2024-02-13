@@ -31,8 +31,18 @@ class UsersController extends Controller
         return view('admin.users', ['users' => $users]);
     }
 
-    public function edit(Request $request)
+    public function find(Request $request, ManageUsers $manageUsers)
     {
-        echo 'Edit!';
+        $user = $manageUsers->getUser($request->id);
+        return view('admin.user', ['user' => $user]);
+    }
+
+    public function search(Request $request, ManageUsers $manageUsers)
+    {
+        if($request->name){
+            $users = $manageUsers->searchUsers($request->name);
+            return response()->json(['names' => $users], 200);
+        }
+        return;
     }
 }

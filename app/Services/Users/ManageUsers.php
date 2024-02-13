@@ -16,4 +16,14 @@ class ManageUsers
     {
         return $this->_manageUsersRepository->getUsersRepository();
     }
+
+    public function getUser($id)
+    {
+        return $this->_manageUsersRepository->getUserRepository($id);
+    }
+
+    public function searchUsers($name)
+    {
+        return $this->_manageUsersRepository->getUsersLikeName($name);
+    }
 }

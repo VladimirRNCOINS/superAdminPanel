@@ -36,4 +36,14 @@ class ManageUsersRepository
 
         return $result;
     }
+
+    public function getUserRepository($id)
+    {
+        return User::find($id);
+    }
+
+    public function getUsersLikeName($name)
+    {
+        return User::select(['id', 'name'])->where('name', 'like', '%'.$name.'%')->take(10)->get();
+    }
 }
