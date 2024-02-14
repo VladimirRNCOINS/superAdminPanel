@@ -28,7 +28,9 @@ class UsersController extends Controller
         $request->limit = (int) $request->limit;
 
         $users = $manageUsers->getUsers();
-        return view('admin.users', ['users' => $users]);
+        $roles = $manageUsers->getRoles();
+
+        return view('admin.users', ['users' => $users, 'roles' => $roles]);
     }
 
     public function find(Request $request, ManageUsers $manageUsers)
@@ -44,5 +46,17 @@ class UsersController extends Controller
             return response()->json(['names' => $users], 200);
         }
         return;
+    }
+
+    public function filters(Request $request, ManageUsers $manageUsers)
+    {
+        $manageUsers->getUserFilters($request);
+        return redirect()->route('users');
+    }
+
+    public function filters_refresh()
+    {
+        session()->forget('show_users_filters');
+        return redirect()->route('users');
     }
 }

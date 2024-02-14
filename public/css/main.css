@@ -162,6 +162,7 @@ label{
     padding: 20px;
     border-radius: 7px;
     margin: 0 0 20px 0;
+    box-shadow: 0 0 2px rgba(0,0,0,0.5);
 }
 .simple_button{
     background-color: #0080ff;
@@ -233,8 +234,8 @@ td{
     list-style-type: none;
     margin: 0;
     padding: 7px 5px 7px 18px;
-    background-color: #d4d4d4;
-    border-bottom: 1px solid #969696;
+    background-color: #5fafff;
+    border-bottom: 1px solid #3f3f3f;
     cursor: pointer;
     font-size: 0.95rem;
 }
@@ -244,13 +245,56 @@ td{
     top: 100%;
     left: 0;
     z-index: 20000;
+    box-shadow: 0 0 3px rgba(0,0,0,0.5);
+    
 }
 .li_user_search:hover{
-    background-color: #969696;
+    background-color: #0066cc;
     color: #fff;
     font-size: 1.2rem;
 }
 .a_user_search{
     color: #000000;
     text-decoration: none;
+}
+#thead_users tr th{
+    background-color: #343a40 !important;
+    color: #fff;
+    padding: 0.8rem 0.5rem;
+}
+#wrap_roles_users_select{
+    display: flex;
+    justify-content: flex-start;
+    width: 30%;
+    margin-bottom: 20px;
+    border: 1px solid #C0C0C0;
+    padding: 20px;
+    border-radius: 5px;
+}
+#wrap_buttom_filters_user_show{
+    margin: 20px 0 0;
+    display: flex;
+}
+#wrap_buttom_filters_user_show button{
+    position: static;
+}
+#users_show_filters_refresh{
+    display: inline-block;
+    border: 1px solid #ced4da;
+    cursor: pointer;
+    padding: 2px;
+    background-color: #fff;
+    border-radius: 5px;
+    margin: 0 0 0 20px;
+    color: #555555
+}
+#users_show_filters_refresh:hover{
+    background-color: #0080ff;
+    color: #fff;
+}
+form{
+    margin: 0;
+}
+#active_users_filters{
+    margin: 20px 0;
 }

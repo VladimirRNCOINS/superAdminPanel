@@ -3,6 +3,8 @@
 namespace App\Repositories\Users;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Role;
+use Session;
 
 class ManageUsersRepository
 {
@@ -17,14 +19,31 @@ class ManageUsersRepository
     {
         $page = $this->_request->page;
         $perPage = $this->_request->limit;
+        $query = User::query();
+        
+        $s_filters = Session::get('show_users_filters');
 
-        $total = User::count('id');
+        if (!empty($s_filters)) {
+            if (isset($s_filters['role'])) {
+                $query->where('roles', 'like', '%'.$s_filters['role'].'%');
+            }
+
+            if (isset($s_filters['active'])) {
+                $query->where('active', $s_filters['active']);
+            }
+
+            if (isset($s_filters['publish'])) {
+                $query->where('publish', $s_filters['publish']);
+            }
+        }
+        //query count
+        $total = $query->count('id');
 
         $lastPage = (int) ceil($total / $perPage);
 
         $skip = ($page * $perPage) - $perPage;
-
-        $result = User::orderBy('name', 'asc')
+        //query data
+        $result = $query->orderBy('name', 'asc')
             ->skip($skip)
             ->take($perPage)
             ->get();
@@ -45,5 +64,10 @@ class ManageUsersRepository
     public function getUsersLikeName($name)
     {
         return User::select(['id', 'name'])->where('name', 'like', '%'.$name.'%')->take(10)->get();
+    }
+
+    public function getRolesRepository()
+    {
+        return Role::all();
     }
 }
