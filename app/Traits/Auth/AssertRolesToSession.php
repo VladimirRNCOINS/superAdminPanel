@@ -11,7 +11,7 @@ Trait AssertRolesToSession
     {
         if (Auth::user()->roles) {
             $expAuthUserRoles = explode('|', Auth::user()->roles);
-
+            
             if (!empty($expAuthUserRoles) && in_array(7, $expAuthUserRoles)) {
                 $this->_roles_arr += ['SuperAdmin' => '7'];
             }

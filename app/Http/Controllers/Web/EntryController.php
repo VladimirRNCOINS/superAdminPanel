@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Traits\Auth\AssertRolesToSession;
 use DB;
 use Auth;
+use Session;
 
 class EntryController extends Controller
 {
@@ -25,7 +26,8 @@ class EntryController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'active' => 1])) {
 
             $request->session()->regenerate();
-            if ($this->rolesToSession()) {
+            if ($this->rolesToSession() && Session::get('SuperAdmin') == '7') {
+
                 return redirect()->route('admin');
             }
         }
