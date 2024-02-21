@@ -51,6 +51,7 @@ class ManageUsers
         }
         if (!empty($show_users_filters)) {
             Session::put('show_users_filters', $show_users_filters);
+            return $show_users_filters;
         }
         return;
     }
