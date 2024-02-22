@@ -70,4 +70,14 @@ class ManageUsersRepository
     {
         return Role::all();
     }
+
+    public function updateUserRepository($request)
+    {
+        return User::where('id', $request->id)
+                                            ->update([
+                                                "roles" => $request->impRoles,
+                                                "active" => $request->active,
+                                                "publish" => $request->publish
+                                            ]);
+    }
 }

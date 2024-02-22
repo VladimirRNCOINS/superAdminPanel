@@ -76,7 +76,6 @@ label{
 .header_button button{
     position: absolute;
     height: 30px;
-    width: 60px;
     top: 20px;
     right: 30px;
     background-color: #0080ff;
@@ -161,7 +160,6 @@ label{
     border: 1px solid #b6b6b6;
     padding: 20px;
     border-radius: 7px;
-    margin: 0 0 20px 0;
     box-shadow: 0 0 2px rgba(0,0,0,0.5);
 }
 .simple_button{
@@ -286,7 +284,7 @@ td{
     background-color: #fff;
     border-radius: 5px;
     margin: 0 0 0 20px;
-    color: #555555
+    color: #555555;
 }
 #users_show_filters_refresh:hover{
     background-color: #0080ff;
@@ -297,4 +295,48 @@ form{
 }
 #active_users_filters{
     margin: 20px 0;
+}
+#wrap_manage_user_roles, #wrap_user_active, #wrap_user_publish{
+    border: 1px solid #0080ff;
+    padding: 15px;
+    border-radius: 5px;
+}
+#wrap_user_active, #wrap_user_publish{
+    height: calc(50% - 10px);
+}
+#wrap_user_active{
+    margin: 0 0 20px 0;
+}
+#wrap_user_active select{
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+#wrap_user_publish{
+    margin: 20px 0 0 0;
+}
+#wrap_manage_user_roles{
+    width: 20%;
+    margin: 0 20px 0 0;
+}
+#wrap_inside_user_update_block{
+    display: flex;
+}
+#user_update_name{
+    margin: 0 0 10px 0;
+}
+.local_item_marker{
+    background-color: #800080;
+    display: inline-block;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1.05rem;
+}
+.item_user_role{
+    margin: 5px 0;
+    font-size: 1.05rem;
+    font-weight: bold;
 }

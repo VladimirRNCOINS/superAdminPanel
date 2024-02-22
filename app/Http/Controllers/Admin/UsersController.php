@@ -33,12 +33,6 @@ class UsersController extends Controller
         return view('admin.users', ['users' => $users, 'roles' => $roles]);
     }
 
-    public function find(Request $request, ManageUsers $manageUsers)
-    {
-        $user = $manageUsers->getUser($request->id);
-        return view('admin.user', ['user' => $user]);
-    }
-
     public function search(Request $request, ManageUsers $manageUsers)
     {
         if($request->name){
@@ -58,5 +52,31 @@ class UsersController extends Controller
     {
         session()->forget('show_users_filters');
         return redirect()->route('users');
+    }
+
+    public function edit(Request $request, ManageUsers $manageUsers)
+    {
+        $user = $manageUsers->getUser($request->id);
+        $user_roles = $manageUsers->explodeUserRoles($user->roles);
+        $roles = $manageUsers->getRoles();
+        return view('admin.user', ['user' => $user, 'roles' => $roles, 'user_roles' => $user_roles]);
+    }
+
+    public function update(Request $request, ManageUsers $manageUsers)
+    {
+        $validated = $request->validate([
+            'check_roles' => 'required|array',
+            'active' => 'required|numeric|in:1,0',
+            'publish' => 'required|numeric|in:1,0',
+        ]);
+
+        if (isset($request->check_roles) && !empty($request->check_roles)) {
+            $request->impRoles = $manageUsers->implodeUsersRoles($request->check_roles);
+        }
+        else {
+            $request->impRoles = '2';
+        }
+        $res = $manageUsers->updateUser($request);
+        return redirect()->route('edit_user', ['id' => $request->id])->with('user_update_success', 'Пользователь успешно обновлен!');
     }
 }
