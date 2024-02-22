@@ -55,4 +55,21 @@ class ManageUsers
         }
         return;
     }
+
+    public function explodeUserRoles($roles)
+    {
+        $expRoles = explode('|', $roles);
+        return $expRoles;
+    }
+
+    public function implodeUsersRoles($roles)
+    {
+        $impRoles = implode('|', $roles);
+        return $impRoles;
+    }
+
+    public function updateUser($request)
+    {
+        return $this->_manageUsersRepository->updateUserRepository($request);
+    }
 }
