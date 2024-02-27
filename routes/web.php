@@ -30,10 +30,12 @@ Route::middleware(['checkDashboardAccess'])->group(function () {
     Route::get('users', [UsersController::class, 'index'])->name('users');
     Route::get('users_show/{page}/{limit}', [UsersController::class, 'show'])->name('users_show');
     Route::get('edit_user/{id}', [UsersController::class, 'edit'])->name('edit_user');
+    Route::get('create_user', [UsersController::class, 'create'])->name('create_user');
     Route::get('refresh_users_filters', [UsersController::class, 'filters_refresh'])->name('refresh_users_filters');
     Route::post('user_search', [UsersController::class, 'search'])->name('user_search');
     Route::post('user_filters', [UsersController::class, 'filters'])->name('user_filters');
     Route::post('user_update', [UsersController::class, 'update'])->name('user_update');
+    
     Route::get('versions', [VersionsController::class, 'index'])->name('versions');
     Route::get('create_version', [VersionsController::class, 'create'])->name('create_version');
 });

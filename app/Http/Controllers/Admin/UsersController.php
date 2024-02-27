@@ -79,4 +79,9 @@ class UsersController extends Controller
         $res = $manageUsers->updateUser($request);
         return redirect()->route('edit_user', ['id' => $request->id])->with('user_update_success', 'Пользователь успешно обновлен!');
     }
+
+    public function create()
+    {
+        return view('admin.user_create');
+    }
 }
