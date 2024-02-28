@@ -72,4 +72,9 @@ class ManageUsers
     {
         return $this->_manageUsersRepository->updateUserRepository($request);
     }
+
+    public function storeUser($request)
+    {
+        return $this->_manageUsersRepository->storeUserRepository($request);
+    }
 }

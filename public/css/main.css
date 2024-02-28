@@ -358,3 +358,13 @@ form{
 .sub_left_menu span{
     vertical-align: -6px;
 }
+#wrap_create_new_user button{
+    position: static;
+    margin-bottom: 20px;
+}
+#wrap_inputs_inside_block{
+    width: calc(50% - 40px);
+}
+.item_label_user_form{
+    margin: 0 0 7px 0;
+}

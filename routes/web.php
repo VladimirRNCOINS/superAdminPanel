@@ -35,7 +35,7 @@ Route::middleware(['checkDashboardAccess'])->group(function () {
     Route::post('user_search', [UsersController::class, 'search'])->name('user_search');
     Route::post('user_filters', [UsersController::class, 'filters'])->name('user_filters');
     Route::post('user_update', [UsersController::class, 'update'])->name('user_update');
-    
+    Route::post('user_store', [UsersController::class, 'store'])->name('user_store');
     Route::get('versions', [VersionsController::class, 'index'])->name('versions');
     Route::get('create_version', [VersionsController::class, 'create'])->name('create_version');
 });

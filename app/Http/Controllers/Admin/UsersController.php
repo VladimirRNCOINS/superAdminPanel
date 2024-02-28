@@ -57,9 +57,12 @@ class UsersController extends Controller
     public function edit(Request $request, ManageUsers $manageUsers)
     {
         $user = $manageUsers->getUser($request->id);
-        $user_roles = $manageUsers->explodeUserRoles($user->roles);
-        $roles = $manageUsers->getRoles();
-        return view('admin.user', ['user' => $user, 'roles' => $roles, 'user_roles' => $user_roles]);
+        if ($user) {
+            $user_roles = $manageUsers->explodeUserRoles($user->roles);
+            $roles = $manageUsers->getRoles();
+            return view('admin.user', ['user' => $user, 'roles' => $roles, 'user_roles' => $user_roles, 'post_action' => "/user_update"]);
+        }
+        return redirect()->route('users');
     }
 
     public function update(Request $request, ManageUsers $manageUsers)
@@ -76,12 +79,45 @@ class UsersController extends Controller
         else {
             $request->impRoles = '2';
         }
+
         $res = $manageUsers->updateUser($request);
-        return redirect()->route('edit_user', ['id' => $request->id])->with('user_update_success', 'Пользователь успешно обновлен!');
+
+        if($res){
+            return redirect()->route('edit_user', ['id' => $request->id])->with('user_update_success', 'Пользователь успешно обновлен!');
+        }
+        
+        return redirect()->route('users');
     }
 
-    public function create()
+    public function create(ManageUsers $manageUsers)
     {
-        return view('admin.user_create');
+        $roles = $manageUsers->getRoles();
+        return view('admin.user', ['roles' => $roles, 'post_action' => "/user_store"]);
+    }
+
+    public function store(Request $request, ManageUsers $manageUsers)
+    {
+        $validated = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:App\Models\User,email',
+            'password' => 'required|min:8',
+            'check_roles' => 'required|array',
+            'active' => 'required|numeric|in:1,0',
+            'publish' => 'required|numeric|in:1,0',
+        ]);
+
+        if (isset($request->check_roles) && !empty($request->check_roles)) {
+            $request->impRoles = $manageUsers->implodeUsersRoles($request->check_roles);
+        }
+        else {
+            $request->impRoles = '2';
+        }
+
+        $id = $manageUsers->storeUser($request);
+        
+        if($id){
+            return redirect()->route('edit_user', ['id' => $id])->with('user_update_success', 'Пользователь успешно создан!');
+        }
+        return redirect()->route('create_user');
     }
 }

@@ -50,6 +50,13 @@
                 </div>
             @endif
         </div>
+        <div id="wrap_create_new_user">
+            <div class="header_button">
+                <a href="{{ route('create_user') }}" >
+                    <button>Создать нового пользователя</button>
+                </a>
+            </div>
+        </div>
         <div id="wrap_data_users">
             <table class="table table-primary table-hover">
                 <thead id="thead_users">

@@ -75,9 +75,25 @@ class ManageUsersRepository
     {
         return User::where('id', $request->id)
                                             ->update([
+                                                "name" => $request->name,
+                                                "email" => $request->email,
                                                 "roles" => $request->impRoles,
                                                 "active" => $request->active,
                                                 "publish" => $request->publish
                                             ]);
+    }
+
+    public function storeUserRepository($request)
+    {
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->roles = $request->impRoles;
+        $user->active = $request->active;
+        $user->publish = $request->publish;
+        $user->save();
+
+        return $user->id;
     }
 }
