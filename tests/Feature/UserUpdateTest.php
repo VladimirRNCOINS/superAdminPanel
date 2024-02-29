@@ -21,6 +21,8 @@ class UserUpdateTest extends TestCase
 
         $response = $this->post('/user_update', [
                                                     'id' => 1,
+                                                    'name' => 'Admin',
+                                                    'email' => 'admin@admin.com',
                                                     'check_roles' => [1,2],
                                                     'active' => 1,
                                                     'publish' => 1

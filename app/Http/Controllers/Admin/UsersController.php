@@ -55,7 +55,7 @@ class UsersController extends Controller
     }
 
     public function edit(Request $request, ManageUsers $manageUsers)
-    {
+    {   
         $user = $manageUsers->getUser($request->id);
         if ($user) {
             $user_roles = $manageUsers->explodeUserRoles($user->roles);
@@ -68,6 +68,8 @@ class UsersController extends Controller
     public function update(Request $request, ManageUsers $manageUsers)
     {
         $validated = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:App\Models\User,email,'.$request->id,
             'check_roles' => 'required|array',
             'active' => 'required|numeric|in:1,0',
             'publish' => 'required|numeric|in:1,0',

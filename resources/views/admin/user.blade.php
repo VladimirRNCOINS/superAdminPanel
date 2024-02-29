@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="div_item_admin_block">
-        @if ($errors->any())
+        @if (!empty($errors) && $errors->any())
             <div class="alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error)
@@ -14,7 +14,7 @@
                     @endforeach
                 </ul>
             </div>
-        @endif
+        @endisset
         @if( request()->routeIs('edit_user') )
             <div>
                 <h5>Редактировать пользователя:</h5>
